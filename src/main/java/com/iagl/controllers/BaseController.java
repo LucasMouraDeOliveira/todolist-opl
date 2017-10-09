@@ -1,4 +1,4 @@
-package com.mkyong.controller;
+/*package com.iagl.controllers;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -36,4 +36,4 @@ public class BaseController {
 
 	}
 
-}
+}*/
