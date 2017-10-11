@@ -1,10 +1,7 @@
 package com.iagl.persistence;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import com.iagl.entities.TodoList;
 
 public class HibernateUtil {
 
@@ -31,17 +28,17 @@ public class HibernateUtil {
     	getSessionFactory().close();
     }
     
-    public static void main(String[] args) {
-    	  System.out.println("Maven + Hibernate + MySQL");
-          Session session = HibernateUtil.getSessionFactory().openSession();
-
-          session.beginTransaction();
-          TodoList todolist = new TodoList();
-          
-          todolist.setName("4715");
-
-          session.save(todolist);
-          session.getTransaction().commit();
-	}
+//    public static void main(String[] args) {
+//    	  System.out.println("Maven + Hibernate + MySQL");
+//          Session session = HibernateUtil.getSessionFactory().openSession();
+//
+//          session.beginTransaction();
+//          TodoList todolist = new TodoList();
+//          
+//          todolist.setName("4715");
+//
+//          session.save(todolist);
+//          session.getTransaction().commit();
+//	}
 
 }
