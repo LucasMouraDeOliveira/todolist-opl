@@ -15,7 +15,8 @@ public class CreatingPrivateListFixture {
 
 	public MultiValueResult createNewListWithNoExistingLists(String listName) throws TodoListAlreadyExistException {
 		User user = new User();
-		TodoList todoList = new TodoList(listName);
+		TodoList todoList = new TodoList();
+		todoList.setName(listName);
 		user.addList(todoList);
 		List<TodoList> userLists = user.getLists();
 		return new MultiValueResult().with("list", userLists.get(0).getName());
@@ -23,9 +24,11 @@ public class CreatingPrivateListFixture {
 	
 	public MultiValueResult createNewListWithExistingList(String existingList, String newList) throws TodoListAlreadyExistException {
 		User user = new User();
-		TodoList existingTodoList = new TodoList(existingList);
+		TodoList existingTodoList = new TodoList();
+		existingTodoList.setName(existingList);
 		user.addList(existingTodoList);
-		TodoList newTodoList = new TodoList(newList);
+		TodoList newTodoList = new TodoList();
+		newTodoList.setName(newList);
 		user.addList(newTodoList);
 		List<TodoList> userLists = user.getLists();
 		return new MultiValueResult()
@@ -36,15 +39,17 @@ public class CreatingPrivateListFixture {
 	
 	public MultiValueResult createNewListWithExistingListWithSameName(String listName) {
 		User user = new User();
-		//On ajoute la première liste
-		TodoList existingTodoList = new TodoList(listName);
+		//On ajoute la premiï¿½re liste
+		TodoList existingTodoList = new TodoList();
+		existingTodoList.setName(listName);
 		try {
 			user.addList(existingTodoList);
 		} catch (TodoListAlreadyExistException e1) {
 			return null;
 		}
-		//On ajoute une liste avec le même nom que la première
-		TodoList newTodoList = new TodoList(listName);
+		//On ajoute une liste avec le mï¿½me nom que la premiï¿½re
+		TodoList newTodoList = new TodoList();
+		newTodoList.setName(listName);
 		try {
 			user.addList(newTodoList);
 		} catch(TodoListAlreadyExistException e) {
