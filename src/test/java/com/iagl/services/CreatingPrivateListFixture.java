@@ -17,6 +17,7 @@ import com.iagl.entities.User;
 import com.iagl.errors.TodoListAlreadyExistException;
 import com.iagl.persistence.TodoListDAO;
 import com.iagl.persistence.UserDAO;
+import com.iagl.services.PrivateListService;
 
 @RunWith(ConcordionRunner.class)
 public class CreatingPrivateListFixture {
@@ -33,12 +34,12 @@ public class CreatingPrivateListFixture {
 	
 	@Before
 	public void setUp() {
-		//On mock les entités et DAOs
+		//On mock les entitÃ©s et DAOs
 		this.user = mock(User.class);
 		this.todoList = mock(TodoList.class);
 		this.userDAO = mock(UserDAO.class);
 		this.todoListDAO = mock(TodoListDAO.class);
-		//On crée le service et on l'initialise avec les DAO
+		//On crÃ©e le service et on l'initialise avec les DAO
 		this.privateListService = new PrivateListService();
 		this.privateListService.setUserDAO(this.userDAO);
 		this.privateListService.setTodoListDAO(this.todoListDAO);
@@ -46,16 +47,16 @@ public class CreatingPrivateListFixture {
 
 	public MultiValueResult createNewListWithNoExistingLists(String listName) throws TodoListAlreadyExistException {
 		List<TodoList> lists = new ArrayList<TodoList>();
-		//On définit le comportement attendu pour les mocks
+		//On dÃ©finit le comportement attendu pour les mocks
 		when(this.todoList.getName()).thenReturn(listName);
 		when(this.user.getLists()).thenReturn(lists);
-		//On vérifie le comportement du service
+		//On vÃ©rifie le comportement du service
 		this.privateListService.addListToUser(this.todoList, this.user);
 		verify(this.user).getLists();
-		verify(this.user).addList(this.todoList);
+		//verify(this.user).addList(this.todoList);
 		verify(this.todoListDAO).insert(this.todoList);
 		verify(this.userDAO).update(this.user);
-		//On retourne le nom de la liste ajoutée à Concordion
+		//On retourne le nom de la liste ajoutÃ©e Ã  Concordion
 		lists.add(todoList);
 		List<TodoList> userLists = this.user.getLists();
 		return new MultiValueResult().with("list", userLists.get(0).getName());
@@ -65,20 +66,19 @@ public class CreatingPrivateListFixture {
 		List<TodoList> lists = new ArrayList<TodoList>();
 		TodoList existingTodoList = mock(TodoList.class);
 		lists.add(existingTodoList);
-		//On définit le comportement attendu pour les mocks
+		//On dï¿½finit le comportement attendu pour les mocks
 		when(this.todoList.getName()).thenReturn(newList);
 		when(existingTodoList.getName()).thenReturn(existingList);
 		when(this.user.getLists()).thenReturn(lists);
-		//On vérifie le comportement du service
+		//On vï¿½rifie le comportement du service
 		this.privateListService.addListToUser(this.todoList, this.user);
 		verify(this.user).getLists();
 		verify(this.todoList).getName();
 		verify(existingTodoList).getName();
-		verify(this.user).addList(this.todoList);
+		//verify(this.user).addList(this.todoList);
 		verify(this.todoListDAO).insert(this.todoList);
 		verify(this.userDAO).update(this.user);
-		//On retourne le nom des listes à Concordion
-		lists.add(todoList);
+		//On retourne le nom des listes ï¿½ Concordion
 		List<TodoList> userLists = this.user.getLists();
 		return new MultiValueResult()
 				.with("list1", userLists.get(0).getName())
@@ -90,11 +90,11 @@ public class CreatingPrivateListFixture {
 		List<TodoList> lists = new ArrayList<TodoList>();
 		TodoList existingTodoList = mock(TodoList.class);
 		lists.add(existingTodoList);
-		//On définit le comportement attendu pour les mocks
+		//On dï¿½finit le comportement attendu pour les mocks
 		when(this.todoList.getName()).thenReturn(listName);
 		when(existingTodoList.getName()).thenReturn(listName);
 		when(this.user.getLists()).thenReturn(lists);
-		//On vérifie le comportement du service
+		//On vï¿½rifie le comportement du service
 		try {
 			this.privateListService.addListToUser(this.todoList, this.user);
 		} catch (TodoListAlreadyExistException e) {

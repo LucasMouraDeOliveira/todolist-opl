@@ -1,33 +1,25 @@
 package com.iagl.entities;
 
 public class TodoList {
-
-	public String getName() {
-		return null;
+	
+	protected Integer id;
+	
+	protected String name;
+	
+	public Integer getId() {
+		return id;
 	}
 	
-//	protected Integer id;
-//	
-//	protected String name;
-//
-//	public TodoList() {
-//		
-//	}
-//	
-//	public Integer getId() {
-//		return id;
-//	}
-//	
-//	public String getName() {
-//		return name;
-//	}
-//	
-//	public void setId(Integer id) {
-//		this.id = id;
-//	}
-//	
-//	public void setName(String name) {
-//		this.name = name;
-//	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }

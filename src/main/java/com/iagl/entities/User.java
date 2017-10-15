@@ -3,32 +3,39 @@ package com.iagl.entities;
 import java.util.List;
 
 public class User {
-
-	public List<TodoList> getLists() {
-		return null;
-	}
-
-	public void addList(TodoList todoList) {
-		// TODO Auto-generated method stub
+	
+	protected Integer id;
+	
+	protected String name;
+	
+	protected List<TodoList> lists;
+	
+	public User() {
+		
 	}
 	
-//	protected List<TodoList> lists;
-//	
-//	public User() {
-//		this.lists = new ArrayList<TodoList>();
-//	}
-//	
-//	public void addList(TodoList list) throws TodoListAlreadyExistException {
-//		for(TodoList todoList : this.lists) {
-//			if(todoList.getName().equals(list.getName())) {
-//				throw new TodoListAlreadyExistException();
-//			}
-//		}
-//		this.lists.add(list);
-//	}
-//	
-//	public List<TodoList> getLists() {
-//		return this.lists;
-//	}
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 
+	public List<TodoList> getLists() {
+		return this.lists;
+	}
+	
+	public void setLists(List<TodoList> lists) {
+		this.lists = lists;
+	}
+	
 }
