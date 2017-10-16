@@ -12,5 +12,9 @@
         
         <property name="name" column="name" type="string"/>
         
+        <many-to-one name="user" class="com.iagl.entities.User" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+        
     </class>
 </hibernate-mapping>

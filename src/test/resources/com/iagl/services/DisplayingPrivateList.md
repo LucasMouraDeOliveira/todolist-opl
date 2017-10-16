@@ -4,7 +4,7 @@
 
 Given a user with a list "[Ma liste](- "#list")".
 
-When the system [searches](- "#result = searchList(#list)") for a liste "Ma liste" for this user.
+When the system [searches](- "#result = searchList(#list)") for a list "Ma liste" for this user.
 
 Then the list "[Ma liste](- "?=#result.list")" is returned.
 
@@ -12,6 +12,6 @@ Then the list "[Ma liste](- "?=#result.list")" is returned.
 
 Given a user with a list "[Ma liste](- "#list")".
 
-When the system searches for a liste "[Liste de courses](- "#list2)" for this [user](- "#result = searchListWithWrongName(#list, #list2)").
+When the system searches for a list "[Liste de courses](- "#list2")" for this [user](- "#result = searchListWithWrongName(#list, #list2)").
 
-Then the system displays an error saying "[There is no list with this name](- "?=#result.errorMessage")".
+Then the system displays an error saying : [There is no list with this name](- "?=#result.errorMessage")

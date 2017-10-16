@@ -1,9 +1,11 @@
 package com.iagl.persistence;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 
 import com.iagl.entities.TodoList;
 
+@Component
 public class TodoListDAO {
 
 	public void insert(TodoList todoList) {
@@ -14,13 +16,15 @@ public class TodoListDAO {
 	}
 
 	public void update(TodoList todoList) {
-		// TODO Auto-generated method stub
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.update(todoList);
+		session.close();
 	}
 
-	public TodoList find(int id) {
+	public void delete(TodoList todoList) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		TodoList list = (TodoList) session.get(TodoList.class, id);
-		return list;
+		session.delete(todoList);
+		session.close();
 	}
 
 }

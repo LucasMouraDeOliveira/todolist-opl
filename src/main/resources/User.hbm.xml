@@ -12,13 +12,12 @@
 
 		<property name="name" column="name" type="string" />
 
-		<list name="lists" table="todolist" inverse="true" lazy="false" fetch="select">
+		<set name="lists" table="todolist" inverse="true" lazy="false" fetch="select">
 			<key>
 				<column name="user_id" not-null="true" />
 			</key>
-			 <index column="id"/>
 			<one-to-many class="com.iagl.entities.TodoList" />
-		</list>
+		</set>
 
 	</class>
 </hibernate-mapping>

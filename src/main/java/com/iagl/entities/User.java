@@ -1,6 +1,6 @@
 package com.iagl.entities;
 
-import java.util.List;
+import java.util.Set;
 
 public class User {
 	
@@ -8,7 +8,7 @@ public class User {
 	
 	protected String name;
 	
-	protected List<TodoList> lists;
+	protected Set<TodoList> lists;
 	
 	public User() {
 		
@@ -30,11 +30,11 @@ public class User {
 		this.name = name;
 	}
 
-	public List<TodoList> getLists() {
+	public Set<TodoList> getLists() {
 		return this.lists;
 	}
 	
-	public void setLists(List<TodoList> lists) {
+	public void setLists(Set<TodoList> lists) {
 		this.lists = lists;
 	}
 	
