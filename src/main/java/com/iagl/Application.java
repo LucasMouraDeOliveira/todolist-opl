@@ -30,7 +30,8 @@ public class Application {
 		query = session.createSQLQuery("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='todolist'");
 		query.executeUpdate();
 		User admin = new User();
-		admin.setName("admin");
+		admin.setLogin("admin");
+		admin.setPassword("root");
 		admin.setId(1);
 		session.save(admin);
 		session.getTransaction().commit();

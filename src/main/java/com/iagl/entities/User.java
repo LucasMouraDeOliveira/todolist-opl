@@ -6,7 +6,9 @@ public class User {
 	
 	protected Integer id;
 	
-	protected String name;
+	protected String login;
+	
+	protected String password;
 	
 	protected Set<TodoList> lists;
 	
@@ -22,12 +24,20 @@ public class User {
 		this.id = id;
 	}
 	
-	public String getName() {
-		return name;
+	public String getLogin() {
+		return login;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Set<TodoList> getLists() {

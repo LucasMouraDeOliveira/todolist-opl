@@ -16,9 +16,10 @@ public class UserService {
 		this.userDAO = userDAO;
 	}
 	
-	public User createUser(String userName) {
+	public User createUser(String userName, String password) {
 		User user = new User();
-		user.setName(userName);
+		user.setLogin(userName);
+		user.setPassword(password);
 		this.userDAO.insert(user);
 		return user;
 	}
@@ -26,6 +27,10 @@ public class UserService {
 	public User getUserById(int userId) {
 		User user = this.userDAO.getUserById(userId);
 		return user;
+	}
+
+	public User findUserByLoginPassword(String login, String password) {
+		return this.userDAO.getUserByLoginPassword(login, password);
 	}
 
 }

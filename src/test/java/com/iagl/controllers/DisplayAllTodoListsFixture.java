@@ -40,7 +40,7 @@ protected PrivateListController listController;
 	}
 	
 	public MultiValueResult displayLists() {
-		User user = this.userService.createUser("bob");
+		User user = this.userService.createUser("bob", "12345");
 		int userId = user.getId();
 		ResponseEntity<?> response = this.listController.getLists(userId);
 		return new MultiValueResult().with("code", response.getStatusCode());

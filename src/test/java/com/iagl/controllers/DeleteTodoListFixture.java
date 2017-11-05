@@ -40,7 +40,7 @@ protected PrivateListController listController;
 	}
 	
 	public MultiValueResult deleteList(String list) {
-		User user = this.userService.createUser("Bob");
+		User user = this.userService.createUser("Bob", "12345");
 		int userId = user.getId();
 		//On commence par créer la liste
 		this.listController.createList(list, userId);

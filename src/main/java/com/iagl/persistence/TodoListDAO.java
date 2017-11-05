@@ -13,6 +13,7 @@ public class TodoListDAO {
 		session.beginTransaction();
         session.save(todoList);
         session.getTransaction().commit();
+        session.close();
 	}
 
 	public void update(TodoList todoList) {

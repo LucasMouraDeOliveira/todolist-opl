@@ -40,14 +40,14 @@ public class CreateTodoListFixture {
 	}
 	
 	public MultiValueResult createList(String listName) {
-		User user = this.userService.createUser("Bob");
+		User user = this.userService.createUser("Bob", "12345");
 		int userId = user.getId();
 		ResponseEntity<?> response = this.listController.createList(listName, userId);
 		return new MultiValueResult().with("code", response.getStatusCode());
 	}
 	
 	public MultiValueResult createAlreadyExistingList(String listName) {
-		User user = this.userService.createUser("Bob");
+		User user = this.userService.createUser("Bob", "12345");
 		int userId = user.getId();
 		//On crée la première liste
 		this.listController.createList(listName, userId);
