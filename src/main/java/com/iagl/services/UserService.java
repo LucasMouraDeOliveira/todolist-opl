@@ -29,8 +29,8 @@ public class UserService {
 		return user;
 	}
 
-	public User findUserByLoginPassword(String login, String password) {
+	/*public User findUserByLoginPassword(String login, String password) {
 		return this.userDAO.getUserByLoginPassword(login, password);
-	}
+	}*/
 
 }

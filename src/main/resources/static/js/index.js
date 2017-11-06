@@ -62,7 +62,7 @@ function displayTable(data) {
 				});
 		});
 		td_edit.append(icon_edit);
-		td_delete.append(icon_delete);
+		td_delete.append(icon_delete).on("click", function(){deleteList(list.name);});
 		tr.append(td_name);
 		tr.append(td_edit);
 		tr.append(td_delete);
@@ -77,4 +77,16 @@ function displayEmptyTable() {
 	var td = $("<td>").text("Vous n'avez aucune liste");
 	tr.append(td);
 	$("#lists").append(tr);
+}
+
+function deleteList(name) {
+	$.ajax({
+		url : "list/"+name+"?id="+userId,
+		method : "delete",
+		success : reload
+	});
+}
+
+function reload() {
+	document.location.href = "/";
 }

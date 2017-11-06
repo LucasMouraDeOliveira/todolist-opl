@@ -55,11 +55,13 @@ public class PrivateListService {
 	}
 
 	public TodoList getListByUserAndName(User user, String listName) {
+		System.out.println("before get list");
 		for(TodoList todoList : user.getLists()) {
 			if(todoList.getName().equals(listName)){
 				return todoList;
 			}
 		}
+		System.out.println("after for");
 		return null;
 	}
 
