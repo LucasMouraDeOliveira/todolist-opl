@@ -1,8 +1,5 @@
 package com.iagl.persistence;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import com.iagl.entities.User;
@@ -10,31 +7,19 @@ import com.iagl.entities.User;
 @Component
 public class UserDAO {
 
-	private SessionFactory sessionFactory;
-
 	public void update(User user) {
-		sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
-		session.save(user);
-		session.close();
+		HibernateUtil.saveOrInsert(user);
+	}
+	
+	public void insert(User user) {
+		HibernateUtil.saveOrInsert(user);
 	}
 
 	public User getUserById(int id) {
-		sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
-		User user = (User) session.get(User.class, id);
-		session.close();
-		return user;
+		return (User)HibernateUtil.find(User.class, id);
 	}
 
-	public void insert(User user) {
-		sessionFactory = HibernateUtil.getSessionFactory();
-		Session session = sessionFactory.openSession();
-		session.save(user);
-		session.close();
-	}
-
-	public User getUserByLoginPassword(String login, String password) {
+	/*public User getUserByLoginPassword(String login, String password) {
 		sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		User user = (User)session.createCriteria(User.class)
@@ -43,6 +28,6 @@ public class UserDAO {
 		    .uniqueResult();
 		session.close();
 		return user;
-	}
+	}*/
 
 }

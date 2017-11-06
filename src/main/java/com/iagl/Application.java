@@ -15,7 +15,7 @@ public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-		initDatabase();
+		//initDatabase();
 	}
 
 	private static void initDatabase() {
@@ -25,10 +25,10 @@ public class Application {
 		query.executeUpdate();
 		query = session.createQuery("delete from User");
 		query.executeUpdate();
-		query = session.createSQLQuery("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='user'");
-		query.executeUpdate();
-		query = session.createSQLQuery("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='todolist'");
-		query.executeUpdate();
+		//query = session.createSQLQuery("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='user'");
+		//query.executeUpdate();
+		//query = session.createSQLQuery("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='todolist'");
+		//query.executeUpdate();
 		User admin = new User();
 		admin.setLogin("admin");
 		admin.setPassword("root");
