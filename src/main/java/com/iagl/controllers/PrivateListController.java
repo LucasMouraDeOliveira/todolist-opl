@@ -39,15 +39,16 @@ public class PrivateListController {
 	
 	@RequestMapping(value="/{listName}", method=RequestMethod.GET)
 	public ResponseEntity<?> getList(@PathVariable("listName") String listName, @RequestParam("token") int userId) {
-//		User user = this.privateListService.getUserByToken(userToken);
-//		if(user != null) {
-//			return new ResponseEntity<>(user.getLists(), HttpStatus.OK);
-//		}
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		User user = this.userService.getUserById(userId);
+		if(user != null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		TodoList todoList = this.privateListService.getListByUserAndName(oldName);
+		return new ResponseEntity<>(todoList, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/{listName}", method=RequestMethod.POST)
-	public ResponseEntity<?> createList(@PathVariable("listName") String listName, @RequestParam("id") int userId) {
+	public ResponseEntity<?> createList(@PathVariable("listName") String listName, @RequestParam("token") int userId) {
 		User user = this.userService.getUserById(userId);
 		if(user == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -63,7 +64,7 @@ public class PrivateListController {
 	}
 	
 	@RequestMapping(value="/{listName}", method=RequestMethod.DELETE)
-	public ResponseEntity<?> deleteList(@PathVariable("listName") String listName, @RequestParam("id") int userId) {
+	public ResponseEntity<?> deleteList(@PathVariable("listName") String listName, @RequestParam("token") int userId) {
 		System.out.println("deleting requested");
 		User user = this.userService.getUserById(userId);
 		System.out.println("User = " + user);
@@ -75,7 +76,24 @@ public class PrivateListController {
 	}
 	
 	@RequestMapping(value="/{oldName}/{newName}", method=RequestMethod.PUT)
-	public ResponseEntity<?> renameList(@PathVariable("oldName") String oldName, @PathVariable("newName") String newName) {
+	public ResponseEntity<?> renameList(@PathVariable("oldName") String oldName, @PathVariable("newName") String newName, @RequestParam("token") int userId) {
+		User user = this.userService.getUserById(userId);
+		TodoList todoList = this.privateListService.getListByUserAndName(oldName);
+		this.privateListService.renameListForUser(user, todoList , newName);
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+	}
+
+	@RequestMapping(value="/{listName}/{element}", method=RequestMethod.PUT)
+	public ResponseEntity<?> addElementList(@PathVariable("listName") String listName, @PathVariable("element") String element, @RequestParam("token") int userId) {
+		User user = this.userService.getUserById(userId);
+		TodoList todoList = this.privateListService.getListByUserAndName(oldName);
+		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+	}
+
+	@RequestMapping(value="/{listName}/{element}", method=RequestMethod.DELETE)
+	public ResponseEntity<?> removeElementList(@PathVariable("listName") String listName, @PathVariable("element") String element, @RequestParam("token") int userId) {
+		User user = this.userService.getUserById(userId);
+		TodoList todoList = this.privateListService.getListByUserAndName(oldName);
 		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 	}
 

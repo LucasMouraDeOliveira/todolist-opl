@@ -1,7 +1,8 @@
-var userId = 1;
-
 $(document).ready(function() {
-	
+	var userId = readCookie("userId");
+	if(userId){
+		createCookie("userId",Math.trunc(Math.random()*100000)+1,60000); // 60 sec
+	}
 	
 	$.ajax({
 		url : "list?token="+userId,
@@ -49,7 +50,17 @@ function displayTable(data) {
 		td_edit = $("<td>");
 		td_delete = $("<td>");
 		icon_edit = $("<img>").addClass("icon").attr("src", "icons/edit.png");
+		icon_edit.click(function(){
+			document.location.href="/detailList?nameList="+list.name;
+		});
 		icon_delete = $("<img>").addClass("icon").attr("src", "icons/delete.png");
+		icon_delete.click(function(){
+			$.ajax({
+					url : "list?nameList="+list.name+"&token="+userId,
+    				type: 'DELETE',
+					success : loadLists
+				});
+		});
 		td_edit.append(icon_edit);
 		td_delete.append(icon_delete);
 		tr.append(td_name);

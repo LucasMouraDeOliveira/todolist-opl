@@ -4,35 +4,33 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Création de liste</title>
+	<title>CrÃ©ation de liste</title>
 	 <!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="css/list.css">
 	
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>	
 	<script type="text/javascript" src="js/cookie.js"></script>
-	<script type="text/javascript" src="js/createList.js"></script>
+
+	<script type="text/javascript" src="js/viewList.js"></script>
 </head>
 <body>
 
-	<h3>Création de liste</h3>
+	<h3>CrÃ©ation de liste</h3>
 	
-	<form class="form-horizontal" onsubmit="createList(event);">
-		
+	<ul id="elementslists">
+
+	</ul>
+
+
+	<form class="form-horizontal" onsubmit="addElementAtList(event);">
 		<div class="form-group">
-			<label class="col-sm-2 control-label">Nom de la liste : </label>
 			<div class="col-sm-6">
 				<input type="text" name="name" id="name" class="form-control" />
 			</div>
+			<button type="submit" class="col-sm-2 btn btn-default">Ajouter</button>
 		</div>
-		
-		<div class="form-group"> 
-			<div class="col-sm-offset-2 col-sm-6">
-				<button type="submit" class="btn btn-default">Valider</button>
-			</div>
-		</div>
-	
 	</form>
 
 </body>

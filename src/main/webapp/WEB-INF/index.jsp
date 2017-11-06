@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/list.css">
 	
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>	
+	<script type="text/javascript" src="js/cookie.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>

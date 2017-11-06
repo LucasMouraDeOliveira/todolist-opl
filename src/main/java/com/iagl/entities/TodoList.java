@@ -8,6 +8,8 @@ public class TodoList {
 	
 	protected String name;
 	
+	protected ArrayList<String> elements;
+
 	@JsonIgnore
 	protected User user;
 	
@@ -34,5 +36,20 @@ public class TodoList {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
+	public void getElements() {
+		return this.elements;
+	}
+
+	public void setElements(ArrayList<String> elements) {
+		this.elements = elements;
+	}
+
+	public void addElement(String element) {
+		this.elements.add(element);
+	}
+
+	public void removeElement(String element) {
+		this.elements.remove(element);
+	}
 }
