@@ -24,7 +24,9 @@ public class TodoListDAO {
 
 	public void delete(TodoList todoList) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.delete(todoList);
+		session.beginTransaction();
+        session.delete(todoList); 
+        session.getTransaction().commit();
 		session.close();
 	}
 

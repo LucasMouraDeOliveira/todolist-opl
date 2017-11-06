@@ -64,7 +64,9 @@ public class PrivateListController {
 	
 	@RequestMapping(value="/{listName}", method=RequestMethod.DELETE)
 	public ResponseEntity<?> deleteList(@PathVariable("listName") String listName, @RequestParam("id") int userId) {
+		System.out.println("deleting requested");
 		User user = this.userService.getUserById(userId);
+		System.out.println("User = " + user);
 		if(user == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

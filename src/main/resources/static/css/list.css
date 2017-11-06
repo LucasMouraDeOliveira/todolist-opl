@@ -3,3 +3,7 @@
 	margin: 0 auto;
 	height: 20px;
 }
+
+.icon_td {
+	cursor: pointer;
+}
